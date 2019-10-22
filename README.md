@@ -28,7 +28,7 @@ dependencies {
 	     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 ```
-### 3. Create Controller.java
+### 3. Create a controller
 
 */src/main/java/demo/Controller.java*
 
@@ -56,3 +56,4 @@ public class Controller {
     }
 }
 ```
+Spring MVC uses the @Controller annotation to automatically identify controllers. Spring's dispatcher server automatically scans the classes marked with the @Controller annotation and detects any @RequestMapping annotations.
