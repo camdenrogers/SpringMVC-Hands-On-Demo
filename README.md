@@ -28,3 +28,31 @@ dependencies {
 	     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 ```
+### 3. Create Controller.java
+
+*/src/main/java/demo/Controller.java*
+
+```
+package demo;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+@Controller
+public class Controller {
+
+    @GetMapping("/user")
+    public String userForm(Model model) {
+        model.addAttribute("user", new User());
+        return "user";
+    }
+
+    @PostMapping("/user")
+    public String greetingSubmit(@ModelAttribute User user) {
+        return "result";
+    }
+}
+```
