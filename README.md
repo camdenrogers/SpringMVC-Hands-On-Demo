@@ -134,7 +134,7 @@ public class UserData {
 
 Our views are using Thymeleaf as the template engine.
 
-*/src/main/resources/templates/add.html*
+*/src/main/resources/templates/add-view.html*
 
 ```
 <!DOCTYPE HTML>
@@ -155,7 +155,7 @@ Our views are using Thymeleaf as the template engine.
 </body>
 </html>
 ```
-*/src/main/resources/templates/home.html*
+*/src/main/resources/templates/home-view.html*
 
 ```
 <!DOCTYPE HTML>
