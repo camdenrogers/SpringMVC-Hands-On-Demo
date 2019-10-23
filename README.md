@@ -160,31 +160,26 @@ Our views are using Thymeleaf as the template engine.
 ```
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-    <body>
-    <table>
-        <thead>
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Password</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!--
-            <tr th:if="${users.empty}">
-                <td colspan="2"> No Users to Display</td>
-            </tr>
-            -->
-            <tr th:each="user : ${users}">
-                <td><span th:text="${user.firstName}"> First Name </span></td>
-                <td><span th:text="${user.lastName}"> Last Name </span></td>
-                <td><span th:text="${user.email}"> Email </span></td>
-                <td><span th:text="${user.password}"> Password </span></td>
-            </tr>
-        </tbody>
-    </table>
-    <a href="/add">Add a User</a>
-    </body>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Password</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td><span th:text="${user.firstName}"> First Name </span></td>
+        <td><span th:text="${user.lastName}"> Last Name </span></td>
+        <td><span th:text="${user.email}"> Email </span></td>
+        <td><span th:text="${user.password}"> Password </span></td>
+    </tr>
+    </tbody>
+</table>
+<a href="/add">Add a User</a>
+</body>
 </html>
 ```
