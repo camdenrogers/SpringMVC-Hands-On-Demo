@@ -161,7 +161,7 @@ public class User {
 
 
 ```
-package profile;
+package demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
