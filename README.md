@@ -5,6 +5,12 @@ Code and instructions for completing Spring MVC Demo.
 
 ### Create a controller
 
+@Controller - Annotation used by Spring so its dispatcher server can automatically identify controllers
+
+@RequestMapping - Annotation used by Spring to map web requests onto handler classes and methods depending on the URI. @PostMapping and @GetMapping are annotations that map POST and GET requests.
+
+@RequestParam - Annotation used by Spring to bind request parameters to a method parameter in your controller. In this case, the parameters firstName, lastName, email, and password are request parameters within the POST request. 
+
 */src/main/java/demo/DemoController.java*
 
 ```
@@ -36,13 +42,10 @@ public class DemoController {
     }
 }
 ```
-@Controller - Annotation used by Spring so its dispatcher server can automatically identify controllers
-
-@RequestMapping - Annotation used by Spring to map web requests onto handler classes and methods depending on the URI. @PostMapping and @GetMapping are annotations that map POST and GET requests.
-
-@RequestParam - Annotation used by Spring to bind request parameters to a method parameter in your controller. In this case, the parameters firstName, lastName, email, and password are request parameters within the POST request. 
 
 ### Create a Model
+
+This is just a Plain Old Java Object (POJO) that will represent the data we are working with for this demo application. 
 
 */src/main/java/demo/User.java*
 
@@ -96,7 +99,7 @@ public class User {
     }
 }
 ```
-This is just a Plain Old Java Object (POJO) that will represent the data we are working with for this demo application. 
+This class handles storage and access to User objects. This is not practical, but it mimics a database and will help understand MVC better so that when you start using a database, Spring and MVC make a little more sense.
 
 */src/main/java/demo/UserData.java*
 
@@ -118,9 +121,9 @@ public class UserData {
     }
 }
 ```
-This class handles storage and access to User objects. This is not practical, but it mimics a database and will help understand MVC better so that when you start using a database, Spring and MVC make a little more sense.
-
 ### Create Views
+
+Our views are using Thymeleaf as the template engine
 
 */src/main/resources/templates/add.html*
 
