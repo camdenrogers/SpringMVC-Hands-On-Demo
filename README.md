@@ -58,7 +58,7 @@ public class DemoController {
 ```
 Spring MVC uses the @Controller annotation to automatically identify controllers. Spring's dispatcher server automatically scans the classes marked with the @Controller annotation and detects any @RequestMapping annotations.
 
-### Create a Plain Old Java Object (POJO) called User.java
+### Create a User model class as a Plain Old Java Object (POJO) called User.java
 
 */src/main/java/demo/User.java*
 
