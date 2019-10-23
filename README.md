@@ -42,11 +42,8 @@ public class DemoController {
     }
 }
 ```
-
-
-
-
-
+<br/>
+<br/>
 
 ### Create a Model
 
@@ -104,11 +101,8 @@ public class User {
     }
 }
 ```
-
-
-
-
-
+<br/>
+<br/>
 
 This class handles storage and access to User objects. This is not practical, but it mimics a database and will help understand MVC better so that when you start using a database, Spring and MVC make a little more sense.
 
@@ -132,11 +126,8 @@ public class UserData {
     }
 }
 ```
-
-
-
-
-
+<br/>
+<br/>
 
 ### Create Views
 
