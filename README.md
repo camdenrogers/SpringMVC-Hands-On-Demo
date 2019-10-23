@@ -1,5 +1,12 @@
 # SpringMVC-Hands-On-Demo
-Code and instructions for completing Spring MVC Demo.
+These are the steps required to create a basic application with the Model-View-Controller (MVC) pattern. In this application, we will be able to create users, and see the full list of users and their details.
+
+<br/>
+
+### Prerequisites
+1. Gradle installed on your computer (I will be using Gradle and this repo is set up using Gradle, but you can also use  Maven)
+
+2. An IDE with Gradle integration (Preferably IntelliJ)
 
 ### Download the Repository
 
