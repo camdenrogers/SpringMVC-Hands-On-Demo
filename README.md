@@ -64,7 +64,7 @@ Spring MVC uses the @Controller annotation to automatically identify controllers
 
 
 ```
-package profile;
+package demo;
 
 public class User {
 
