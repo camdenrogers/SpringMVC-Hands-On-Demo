@@ -175,3 +175,5 @@ public class Application {
 
 }
 ```
+
+Create a class to handle storage and access to User objects. This is not practical, but it mimics a database and will help understand MVC better so that when you start using a database, Spring and MVC make a little more sense.
