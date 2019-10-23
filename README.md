@@ -25,7 +25,6 @@ public class DemoController {
 
     @GetMapping("/add")
     public String userForm(Model model) {
-        //model.addAttribute("user", new User());
         return "addUser";
     }
 
@@ -37,12 +36,11 @@ public class DemoController {
     }
 }
 ```
-
 @Controller - Annotation used by Spring so its dispatcher server can automatically identify controllers
 
 @RequestMapping - Annotation used by Spring to map web requests onto handler classes and methods depending on the URI. @PostMapping and @GetMapping are annotations that map POST and GET requests.
 
-
+@RequestParam - Annotation used by Spring to bind request parameters to a method parameter in your controller. In this case, the parameters firstName, lastName, email, and password are request parameters within the POST request. 
 
 ### Create a User model class as a Plain Old Java Object (POJO) called User.java
 
