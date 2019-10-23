@@ -55,20 +55,12 @@ public class User {
     private String lastName;
     private String email;
     private String password;
-    private int userId;
-    private static int nextUserId = 1;
 
     public User(String firstName, String lastName, String email, String password) {
-        this();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-    }
-
-    public User(){
-        userId = nextUserId;
-        nextUserId++;
     }
 
     public String getFirstName() {
@@ -102,22 +94,14 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
 }
 ```
+This is just a Plain Old Java Object (POJO) that will represent the data we are working with for this demo application. 
+
 */src/main/java/demo/UserData.java*
 
 ```
 package demo;
-
-import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.ArrayList;
 
@@ -132,25 +116,9 @@ public class UserData {
     public static void add(User newUser){
         users.add(newUser);
     }
-
-    public static void remove(int id){
-        User userToRemove = getByUserId(id);
-        users.remove(userToRemove);
-    }
-
-    public static User getByUserId(int id){
-        User foundUser = null;
-
-        for(User possibleUser : users){
-            if(possibleUser.getUserId() == id){
-                foundUser = possibleUser;
-            }
-        }
-        return foundUser;
-    }
 }
-
 ```
+This class handles storage and access to User objects. This is not practical, but it mimics a database and will help understand MVC better so that when you start using a database, Spring and MVC make a little more sense.
 
 ### Create Views
 
@@ -208,26 +176,3 @@ public class UserData {
     </body>
 </html>
 ```
-
-### Make the application executable
-
-*/src/main/java/demo/Application.java*
-
-
-```
-package demo;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-@SpringBootApplication
-public class Application {
-
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
-
-}
-```
-
-Create a class to handle storage and access to User objects. This is not practical, but it mimics a database and will help understand MVC better so that when you start using a database, Spring and MVC make a little more sense.
