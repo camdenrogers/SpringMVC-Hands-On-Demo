@@ -7,7 +7,7 @@ These are the steps required to create a basic application with the Model-View-C
 2. An IDE with Gradle integration (Preferably IntelliJ)
 
 ### 1. Download Repository and Import Project into IDE
-
+<br/>
 ### 2. Create Controller
 
 @Controller - Annotation used by Spring so its dispatcher server can automatically identify controllers
