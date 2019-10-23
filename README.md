@@ -12,12 +12,6 @@ These are the steps required to create a basic application with the Model-View-C
 
 ### 2. Create Controller
 
-@Controller - Annotation used by Spring so its dispatcher server can automatically identify controllers
-
-@RequestMapping - Annotation used by Spring to map web requests onto handler classes and methods depending on the URI. @PostMapping and @GetMapping are annotations that map POST and GET requests.
-
-@RequestParam - Annotation used by Spring to bind request parameters to a method parameter in your controller. In this case, the parameters firstName, lastName, email, and password are request parameters within the POST request. 
-
 */src/main/java/demo/DemoController.java*
 
 ```
@@ -54,7 +48,7 @@ public class DemoController {
 
 ### 3. Create Models
 
-This is just a Plain Old Java Object (POJO) that will represent the data we are working with for this demo application. 
+This class is just a Plain Old Java Object (POJO) that will represent the data we are working with for this demo application. 
 
 */src/main/java/demo/User.java*
 
@@ -138,7 +132,7 @@ public class UserData {
 
 ### 4. Create Views
 
-Our views are using Thymeleaf as the template engine
+Our views are using Thymeleaf as the template engine.
 
 */src/main/resources/templates/add.html*
 
