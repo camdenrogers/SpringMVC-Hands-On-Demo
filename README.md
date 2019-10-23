@@ -42,15 +42,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class Controller {
+public class DemoController {
 
-    @GetMapping("/user")
+    @GetMapping("/demo")
     public String userForm(Model model) {
         model.addAttribute("user", new User());
         return "user";
     }
 
-    @PostMapping("/user")
+    @PostMapping("/demo")
     public String greetingSubmit(@ModelAttribute User user) {
         return "result";
     }
@@ -109,3 +109,69 @@ public class User {
 }
 ```
 
+### Create the view
+
+*src/main/resources/templates/demo.html*
+
+```
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Form</h1>
+<form action="#" th:action="@{/demo}" th:object="${user}" method="post">
+    <p>Username: <input type="text" th:field="*{username}" /></p>
+    <p>Password: <input type="text" th:field="*{password}" /></p>
+    <p>Email: <input type="text" th:field="*{email}" /></p>
+    <p>Phone: <input type="text" th:field="*{phone}" /></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+</body>
+</html>
+```
+
+### Create the result view
+
+*src/main/resources/templates/result.html*
+
+```
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Result</h1>
+<p th:text="'username: ' + ${user.username}" />
+<p th:text="'password: ' + ${user.password}" />
+<p th:text="'email: ' + ${user.email}" />
+<p th:text="'phone: ' + ${user.phone}" />
+<a href="/user">Submit another message</a>
+</body>
+</html>
+```
+
+### Make the application executable
+
+*/src/main/java/demo/Application.java*
+
+
+```
+package profile;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+
+}
+```
