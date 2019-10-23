@@ -150,7 +150,7 @@ public class User {
 <p th:text="'password: ' + ${user.password}" />
 <p th:text="'email: ' + ${user.email}" />
 <p th:text="'phone: ' + ${user.phone}" />
-<a href="/user">Submit another message</a>
+<a href="/demo">Submit another message</a>
 </body>
 </html>
 ```
