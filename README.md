@@ -6,9 +6,9 @@ These are the steps required to create a basic application with the Model-View-C
 
 2. An IDE with Gradle integration (Preferably IntelliJ)
 
-### Download the Repository
+### 1. Download Repository
 
-### Create a controller
+### 2. Create Controller
 
 @Controller - Annotation used by Spring so its dispatcher server can automatically identify controllers
 
@@ -50,7 +50,7 @@ public class DemoController {
 <br/>
 <br/>
 
-### Create a Model
+### 3. Create Models
 
 This is just a Plain Old Java Object (POJO) that will represent the data we are working with for this demo application. 
 
@@ -134,7 +134,7 @@ public class UserData {
 <br/>
 <br/>
 
-### Create Views
+### 4. Create Views
 
 Our views are using Thymeleaf as the template engine
 
