@@ -27,12 +27,12 @@ public class DemoController {
     @GetMapping("")
     public String home(Model model){
         model.addAttribute("users",UserData.getAll());
-        return "home";
+        return "home-view";
     }
 
     @GetMapping("/add")
     public String userForm(Model model) {
-        return "addUser";
+        return "add-view";
     }
 
     @PostMapping("/add")
