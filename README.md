@@ -43,6 +43,7 @@ public class DemoController {
 }
 ```
 
+
 ### Create a Model
 
 This is just a Plain Old Java Object (POJO) that will represent the data we are working with for this demo application. 
@@ -99,6 +100,8 @@ public class User {
     }
 }
 ```
+
+
 This class handles storage and access to User objects. This is not practical, but it mimics a database and will help understand MVC better so that when you start using a database, Spring and MVC make a little more sense.
 
 */src/main/java/demo/UserData.java*
@@ -121,6 +124,8 @@ public class UserData {
     }
 }
 ```
+
+
 ### Create Views
 
 Our views are using Thymeleaf as the template engine
