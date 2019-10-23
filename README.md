@@ -42,19 +42,50 @@ public class DemoController {
 
 @RequestParam - Annotation used by Spring to bind request parameters to a method parameter in your controller. In this case, the parameters firstName, lastName, email, and password are request parameters within the POST request. 
 
-### Create a User model class as a Plain Old Java Object (POJO) called User.java
+### Create a Model
 
 */src/main/java/demo/User.java*
-
 
 ```
 package demo;
 
 public class User {
 
-    private String username;
-    private String password;
+    private String firstName;
+    private String lastName;
     private String email;
+    private String password;
+    private int userId;
+    private static int nextUserId = 1;
+
+    public User(String firstName, String lastName, String email, String password) {
+        this();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+    }
+
+    public User(){
+        userId = nextUserId;
+        nextUserId++;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
     public String getEmail() {
         return email;
@@ -64,25 +95,6 @@ public class User {
         this.email = email;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    private String phone;
-
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -90,12 +102,59 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 }
 ```
+*/src/main/java/demo/UserData.java*
 
-### Create the view
+```
+package demo;
 
-*src/main/resources/templates/demo.html*
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+import java.util.ArrayList;
+
+public class UserData {
+
+    static ArrayList<User> users= new ArrayList<>();
+
+    public static ArrayList<User> getAll(){
+        return users;
+    }
+
+    public static void add(User newUser){
+        users.add(newUser);
+    }
+
+    public static void remove(int id){
+        User userToRemove = getByUserId(id);
+        users.remove(userToRemove);
+    }
+
+    public static User getByUserId(int id){
+        User foundUser = null;
+
+        for(User possibleUser : users){
+            if(possibleUser.getUserId() == id){
+                foundUser = possibleUser;
+            }
+        }
+        return foundUser;
+    }
+}
+
+```
+
+### Create Views
+
+*/src/main/resources/templates/add.html*
 
 ```
 <!DOCTYPE HTML>
@@ -106,36 +165,47 @@ public class User {
 </head>
 <body>
 <h1>Form</h1>
-<form action="#" th:action="@{/demo}" th:object="${user}" method="post">
-    <p>Username: <input type="text" th:field="*{username}" /></p>
-    <p>Password: <input type="text" th:field="*{password}" /></p>
-    <p>Email: <input type="text" th:field="*{email}" /></p>
-    <p>Phone: <input type="text" th:field="*{phone}" /></p>
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+<form action="#" th:action="@{/add}" th:object="${user}" method="post">
+    <p>First Name: <input type="text" name="firstName"></p>
+    <p>Last Name: <input type="text" name="lastName"></p>
+    <p>Email: <input type="text" name="email"></p>
+    <p>Password: <input type="text" name="password"></p>
+    <p><input type="submit" value="Add User"></p>
 </form>
 </body>
 </html>
 ```
-
-### Create the result view
-
-*src/main/resources/templates/result.html*
+*/src/main/resources/templates/home.html*
 
 ```
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Getting Started: Handling Form Submission</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
-<body>
-<h1>Result</h1>
-<p th:text="'username: ' + ${user.username}" />
-<p th:text="'password: ' + ${user.password}" />
-<p th:text="'email: ' + ${user.email}" />
-<p th:text="'phone: ' + ${user.phone}" />
-<a href="/demo">Submit another message</a>
-</body>
+    <body>
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Password</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--
+            <tr th:if="${users.empty}">
+                <td colspan="2"> No Users to Display</td>
+            </tr>
+            -->
+            <tr th:each="user : ${users}">
+                <td><span th:text="${user.firstName}"> First Name </span></td>
+                <td><span th:text="${user.lastName}"> Last Name </span></td>
+                <td><span th:text="${user.email}"> Email </span></td>
+                <td><span th:text="${user.password}"> Password </span></td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/add">Add a User</a>
+    </body>
 </html>
 ```
 
