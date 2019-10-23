@@ -28,9 +28,9 @@ dependencies {
 	     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 ```
-### 3. Create a controller
+### Create a controller
 
-*/src/main/java/demo/Controller.java*
+*/src/main/java/demo/DemoController.java*
 
 ```
 package demo;
@@ -57,3 +57,55 @@ public class Controller {
 }
 ```
 Spring MVC uses the @Controller annotation to automatically identify controllers. Spring's dispatcher server automatically scans the classes marked with the @Controller annotation and detects any @RequestMapping annotations.
+
+### Create a Plain Old Java Object (POJO) called User.java
+
+*/src/main/java/demo/User.java*
+
+
+```
+package profile;
+
+public class User {
+
+    private String username;
+    private String password;
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    private String phone;
+
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+}
+```
+
