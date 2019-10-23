@@ -6,7 +6,7 @@ These are the steps required to create a basic application with the Model-View-C
 
 2. An IDE with Gradle integration (Preferably IntelliJ)
 
-### 1. Download Repository
+### 1. Download Repository and Import Project into IDE
 
 ### 2. Create Controller
 
