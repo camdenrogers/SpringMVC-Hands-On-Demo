@@ -1,33 +1,8 @@
 # SpringMVC-Hands-On-Demo
 Code and instructions for completing Spring MVC Demo.
 
-### 1. Download the Repository
+### Download the Repository
 
-### 2. Create the build.gradle file in the root directory
-
-
-*build.gradle*
-```
-plugins {
-	id 'org.springframework.boot' version '2.1.8.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
-	id 'java'
-}
-
-group = 'com.example'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
-
-repositories {
-	     mavenCentral()
-}
-
-dependencies {
-	     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	     implementation 'org.springframework.boot:spring-boot-starter-web'
-	     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-}
-```
 ### Create a controller
 
 */src/main/java/demo/DemoController.java*
@@ -37,26 +12,37 @@ package demo;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class DemoController {
 
-    @GetMapping("/demo")
-    public String userForm(Model model) {
-        model.addAttribute("user", new User());
-        return "user";
+    @GetMapping("")
+    public String home(Model model){
+        model.addAttribute("users",UserData.getAll());
+        return "home";
     }
 
-    @PostMapping("/demo")
-    public String greetingSubmit(@ModelAttribute User user) {
-        return "result";
+    @GetMapping("/add")
+    public String userForm(Model model) {
+        //model.addAttribute("user", new User());
+        return "addUser";
+    }
+
+    @PostMapping("/add")
+    public String greetingSubmit(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String email, @RequestParam String password) {
+        User newUser = new User(firstName,lastName,email,password);
+        UserData.add(newUser);
+        return "redirect:";
     }
 }
 ```
-Spring MVC uses the @Controller annotation to automatically identify controllers. Spring's dispatcher server automatically scans the classes marked with the @Controller annotation and detects any @RequestMapping annotations.
+
+@Controller - Annotation used by Spring so its dispatcher server can automatically identify controllers
+
+@RequestMapping - Annotation used by Spring to map web requests onto handler classes and methods depending on the URI. @PostMapping and @GetMapping are annotations that map POST and GET requests.
+
+
 
 ### Create a User model class as a Plain Old Java Object (POJO) called User.java
 
