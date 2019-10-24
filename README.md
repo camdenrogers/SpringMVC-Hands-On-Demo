@@ -33,12 +33,12 @@ public class DemoController {
     }
 
     @GetMapping("/add")
-    public String userForm(Model model) {
+    public String addUserForm(Model model) {
         return "add-view";
     }
 
     @PostMapping("/add")
-    public String greetingSubmit(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String email, @RequestParam String password) {
+    public String userFormSubmit(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String email, @RequestParam String password) {
         User newUser = new User(firstName,lastName,email,password);
         UserData.add(newUser);
         return "redirect:";
