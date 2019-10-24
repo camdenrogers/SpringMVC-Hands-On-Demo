@@ -147,7 +147,7 @@ Our views are using Thymeleaf as the template engine.
 </head>
 <body>
 <h1>Form</h1>
-<form action="#" th:action="@{/add}" th:object="${user}" method="post">
+<form action="#" th:action="@{/add}" method="post">
     <p>First Name: <input type="text" name="firstName"></p>
     <p>Last Name: <input type="text" name="lastName"></p>
     <p>Email: <input type="text" name="email"></p>
